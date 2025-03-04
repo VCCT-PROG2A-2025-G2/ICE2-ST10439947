@@ -27,9 +27,9 @@ namespace ICE2
             int checkSound2 = 0;
             int checkSound3 = 0;
 
-            string sound1FilePath = Path.Combine(Directory.GetCurrentDirectory(), "Sounds", "oiiai.wav");
-            string sound2FilePath = Path.Combine(Directory.GetCurrentDirectory(), "Sounds", "meow.wav");
-            string sound3FilePath = Path.Combine(Directory.GetCurrentDirectory(), "Sounds", "susguy.wav");
+            string sound1FilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Sounds", "oiiai.wav");
+            string sound2FilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Sounds", "meow.wav");
+            string sound3FilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Sounds", "susguy.wav");
 
             //This loops the menu until the user quits
             while (true)
@@ -45,6 +45,7 @@ namespace ICE2
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("1. OIIAI");
                 }
 
@@ -55,6 +56,7 @@ namespace ICE2
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("2. Meow Meow Meow Meow");
                 }
                 
@@ -65,6 +67,7 @@ namespace ICE2
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("3. Sus guy");
                 }
 
@@ -77,17 +80,20 @@ namespace ICE2
                 switch (key.Key)
                 {
                     case ConsoleKey.D1:
+                        Console.WriteLine($"\nFile is located at {sound1FilePath}");
                         SoundPlayer player1 = new SoundPlayer(sound1FilePath);
                         player1.PlaySync();
                         checkSound1 = 1;
                         break;
 
                     case ConsoleKey.D2:
+                        Console.WriteLine($"\nFile is located at {sound2FilePath}");
                         SoundPlayer player2 = new SoundPlayer(sound2FilePath);
                         player2.PlaySync();
                         checkSound2 = 1;
                         break;
                     case ConsoleKey.D3:
+                        Console.WriteLine($"\nFile is located at {sound3FilePath}");
                         SoundPlayer player3 = new SoundPlayer(sound3FilePath);
                         player3.PlaySync();
                         checkSound3 = 1;
@@ -96,7 +102,7 @@ namespace ICE2
                         QuitApp();
                         return;
                 }
-
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Clear();
             }
         }
