@@ -6,6 +6,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -25,6 +26,11 @@ namespace ICE2
             int checkSound1 = 0;
             int checkSound2 = 0;
             int checkSound3 = 0;
+
+            string sound1FilePath = Path.Combine(Directory.GetCurrentDirectory(), "Sounds", "oiiai.wav");
+            string sound2FilePath = Path.Combine(Directory.GetCurrentDirectory(), "Sounds", "meow.wav");
+            string sound3FilePath = Path.Combine(Directory.GetCurrentDirectory(), "Sounds", "susguy.wav");
+
             //This loops the menu until the user quits
             while (true)
             {
@@ -71,19 +77,19 @@ namespace ICE2
                 switch (key.Key)
                 {
                     case ConsoleKey.D1:
-                        SoundPlayer soundPlayer = new SoundPlayer(@"C:\Users\Amelia\source\repos\ICE2\ICE2\oiiai.wav");
-                        soundPlayer.Play();
+                        SoundPlayer player1 = new SoundPlayer(sound1FilePath);
+                        player1.PlaySync();
                         checkSound1 = 1;
                         break;
 
                     case ConsoleKey.D2:
-                        SoundPlayer soundPlayer2 = new SoundPlayer(@"C:\Users\Amelia\source\repos\ICE2\ICE2\meow.wav");
-                        soundPlayer2.Play();
+                        SoundPlayer player2 = new SoundPlayer(sound2FilePath);
+                        player2.PlaySync();
                         checkSound2 = 1;
                         break;
                     case ConsoleKey.D3:
-                        SoundPlayer soundPlayer3 = new SoundPlayer(@"C:\Users\Amelia\source\repos\ICE2\ICE2\susguy.wav");
-                        soundPlayer3.Play();
+                        SoundPlayer player3 = new SoundPlayer(sound3FilePath);
+                        player3.PlaySync();
                         checkSound3 = 1;
                         break;
                     case ConsoleKey.Q:
